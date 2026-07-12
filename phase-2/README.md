@@ -441,3 +441,29 @@ The objective is not to become a LangChain developer.
 
 The objective is to become the kind of engineer who could build the abstractions that frameworks provide.
 
+
+
+## Folder Responsibilities & Core Engineering Terms
+
+| Folder          | Core Responsibility   | What it Means                                                                                                                                                         | Responsible For                                                                         | Not Responsible For                           |
+| --------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------- |
+| **`api/`**      | HTTP Layer            | The application's **entry and exit point**. Receives HTTP requests, validates them, calls the appropriate service, and returns an HTTP response.                      | Routes, endpoints, request parsing, response returning                                  | Business logic, prompt engineering, LLM calls |
+| **`schemas/`**  | API Contracts         | Defines the **shape and rules of data** that enters and leaves your application. A contract is simply a promise: "Every request/response will follow this structure." | Pydantic request/response models, validation, API data structures                       | Business logic, API calls, calculations       |
+| **`services/`** | Business Logic        | The **actual work** your application performs to solve a problem. Business logic answers **"What should happen?"** when a request arrives.                            | Prompt construction, calling the LLM, processing data, orchestrating workflows, retries | HTTP routing, request validation              |
+| **`llm/`**      | Provider Layer        | Everything related to communicating with LLM providers. It abstracts away **how** your application talks to OpenAI, Groq, Claude, etc.                                | Client initialization, provider configuration, prompt storage, provider-specific code   | Feature-specific logic, API routes            |
+| **`core/`**     | Shared Infrastructure | Global configuration and application-wide utilities that every part of the project may depend on.                                                                     | Settings, environment variables, logging, constants, shared configuration               | Business logic, feature implementation        |
+
+---
+
+## Engineering Terms
+
+| Term                       | Meaning                                                                                                                                     |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Business Logic**         | The application's actual behavior—the steps it performs to solve a user's problem (e.g., summarize text, generate SQL, review a resume).    |
+| **API Contract**           | A promise that every request and response follows a predefined structure, allowing clients and servers to communicate reliably.             |
+| **Request Model**          | Defines the data the client must send to the API.                                                                                           |
+| **Response Model**         | Defines the data the API guarantees it will return.                                                                                         |
+| **Validation**             | Ensuring incoming and outgoing data matches the expected schema before the application processes or returns it.                             |
+| **Abstraction**            | Hiding implementation details behind a clear interface so other parts of the application don't need to know how something works internally. |
+| **Separation of Concerns** | Giving each file or folder one clear responsibility so the codebase remains modular, maintainable, and easy to extend.                      |
+
