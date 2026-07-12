@@ -7,4 +7,4 @@ router = APIRouter()
 
 @router.post("/", response_model=SummarizeResponse)
 async def res_summary(text: str = Body(..., media_type="text/plain")):
-    return await perfrom_summary(text)
+    return await perform_summary(text)

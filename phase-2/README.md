@@ -382,17 +382,17 @@ Commit
 
 # Definition of Done (Milestone 2)
 
-* [ ] Introduce `api/` using `APIRouter`
-* [ ] Move provider initialization into `llm/`
-* [ ] Implement `/summarize`
-* [ ] Implement `/extract-json`
-* [ ] Implement `/code-explain`
-* [ ] Implement `/generate-sql`
-* [ ] Return validated Pydantic responses
-* [ ] Create initial prompt library
+* [X] Introduce `api/` using `APIRouter`
+* [X] Move provider initialization into `llm/`
+* [X] Implement `/summarize`
+* [X] Implement `/extract-json`
+* [X] Implement `/code-explain`
+* [X] Implement `/generate-sql`
+* [X] Return validated Pydantic responses
+* [X] Create initial prompt library
 * [ ] Improve error handling
 * [ ] Update tests
-* [ ] Refactor only when duplication appears
+* [X] Refactor only when duplication appears
 
 ---
 
@@ -467,3 +467,5 @@ The objective is to become the kind of engineer who could build the abstractions
 | **Abstraction**            | Hiding implementation details behind a clear interface so other parts of the application don't need to know how something works internally. |
 | **Separation of Concerns** | Giving each file or folder one clear responsibility so the codebase remains modular, maintainable, and easy to extend.                      |
 
+
+Actually, for your current setup, the best way to enforce this is to tell the LLM what your Pydantic model requires. If you ever want to get even more advanced, you can use Instructor or **Pydantic AI** (which are libraries that handle this automatically), but for now, the prompt update above is the most effective way to "enforce" the schema.

@@ -5,5 +5,6 @@ class ChatRequest(BaseModel):
     query: str
 
 
-class SummarizeRequest(BaseModel):
-    text: str
+class SQLRequest(BaseModel):
+    question: str
+    schema_context: str  # The user provides the table definitions here
