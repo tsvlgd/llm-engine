@@ -15,7 +15,7 @@ async def perform_summary(text: str) -> SummarizeResponse:
             },
             {"role": "user", "content": text},
         ],
-        response_format={"type": "json_object"},  # Guaranteed JSON mode
+        response_format={"type": "json_object"},
     )
     data = json.loads(completion.choices[0].message.content)
     return SummarizeResponse(**data)
