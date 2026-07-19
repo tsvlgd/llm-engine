@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import chat, summarize, extract, sql, code
+from app.api import chat, summarize, extract, sql, code, assistant
 from app.core.config import settings
 
 app = FastAPI(title="AI Workbench")
@@ -9,6 +9,7 @@ app.include_router(summarize.router, prefix="/summarize", tags=["Summarize"])
 app.include_router(extract.router, prefix="/extract", tags=["extract"])
 app.include_router(sql.router, prefix="/sql", tags=["SQL"])
 app.include_router(code.router, prefix="/code", tags=["Explainer"])
+app.include_router(assistant.router, prefix="/assistant", tags=["Assistant"])
 
 
 @app.get("/")

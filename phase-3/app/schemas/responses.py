@@ -36,3 +36,12 @@ class SQLResponse(BaseModel):
     sql_query: str
     explanation: str
     target_database: Optional[str] = None  # e.g., "PostgreSQL", "MySQL", "SQLite
+
+
+class AssistantResponse(BaseModel):
+    response: str
+    provider: str
+    model: str
+    tools_used: list[str]
+    latency_ms: int
+    finish_reason: str
