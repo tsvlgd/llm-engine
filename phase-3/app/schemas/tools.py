@@ -21,16 +21,16 @@ current_time_schema = {
     "function": {
         "name": "current_time",
         "description": "Get the current date and time in ISO format.",
-        "parameters": {"type": "object", "properties": {}},
+        "parameters": {"type": "object", "properties": {}, "required": []},
     },
 }
 
 uuid_schema = {
     "type": "function",
     "function": {
-        "name": "generate_uuid",
+        "name": "uuid",
         "description": "Generate a random unique identifier (UUID v4).",
-        "parameters": {"type": "object", "properties": {}},
+        "parameters": {"type": "object", "properties": {}, "required": []},
     },
 }
 

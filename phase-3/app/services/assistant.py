@@ -15,19 +15,27 @@ async def run_assistant(query: str) -> AssistantResponse:
 
     messages = [
         {
+            "role": "system",
+            "content": "You are a helpful assistant. When using tools that do not require parameters (like fetch_uuid or current_time), always pass an empty object {} for arguments.",
+        },
+        {
             "role": "user",
             "content": query,
-        }
+        },
     ]
 
     # First LLM call
-    response = client.chat.completions.create(
-        model=settings.model,
-        messages=messages,
-        tools=TOOLS,
-    )
-
-    message = response.choices[0].message
+    try:
+        response = client.chat.completions.create(
+            model=settings.model,
+            messages=messages,
+            tools=TOOLS,
+            tool_choice="auto",
+        )
+        message = response.choices[0].message
+    except Exception as e:
+        if hasattr(e, "body"):
+            raise e
 
     # No tool required
     if not message.tool_calls:
@@ -41,13 +49,27 @@ async def run_assistant(query: str) -> AssistantResponse:
             latency_ms=latency,
             finish_reason=response.choices[0].finish_reason,
         )
-
-    messages.append(message)
+    messages.append(
+        {
+            "role": "assistant",
+            "content": message.content,
+            "tool_calls": [
+                {
+                    "id": tc.id,
+                    "type": "function",
+                    "function": {
+                        "name": tc.function.name,
+                        "arguments": tc.function.arguments,
+                    },
+                }
+                for tc in message.tool_calls
+            ],
+        }
+    )
 
     # Execute every tool
     for tool_call in message.tool_calls:
         tools_used.append(tool_call.function.name)
-
         result = registry.execute(tool_call)
 
         messages.append(
