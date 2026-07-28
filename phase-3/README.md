@@ -269,8 +269,8 @@ Example
 
 ## More Tools
 
-* [ ] Current Time
-* [ ] UUID Generator
+* [X] Current Time
+* [X] UUID Generator
 
 ---
 
