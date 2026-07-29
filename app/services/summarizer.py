@@ -1,7 +1,7 @@
 import json
 from app.llm.client import client
 from app.core.config import settings
-from app.llm.prompts import loader
+from app.prompts import loader
 from app.schemas.responses import SummarizeResponse
 
 

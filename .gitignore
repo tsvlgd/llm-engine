@@ -1,16 +1,26 @@
-# --- Virtual Environments ---
+# Virtual Environments
 .venv/
 venv/
 env/
 ENV/
 
-# --- Python Compiled/Cache Files ---
+# Python
 __pycache__/
+*.pyc
+*.pyo
+dist/
+build/
+*.egg-info/
 
-# --- Environment Variables ---
-# IMPORTANT: This prevents your API keys from being uploaded to GitHub
+# Environment Variables
 .env
-# --- IDE/Editor Settings ---
+
+# IDE/Editor
 .vscode/
 .idea/
 .DS_Store
+*.swp
+*.swo
+
+# OS
+Thumbs.db

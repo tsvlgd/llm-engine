@@ -1,6 +1,6 @@
 import json
 from app.llm.client import client
-from app.llm.prompts import loader
+from app.prompts import loader
 from app.core.config import settings
 from app.schemas.requests import SQLRequest
 from app.schemas.responses import SQLResponse

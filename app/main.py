@@ -1,9 +1,14 @@
 from fastapi import FastAPI
 from app.api import chat, summarize, extract, sql, code, assistant
 from app.core.config import settings
+from app import __title__, __version__, __description__
 
-app = FastAPI(title="AI Workbench")
 
+app = FastAPI(
+    title=__title__,
+    description=__description__,
+    version=__version__,
+)
 app.include_router(chat.router, prefix="/chat", tags=["Chat"])
 app.include_router(summarize.router, prefix="/summarize", tags=["Summarize"])
 app.include_router(extract.router, prefix="/extract", tags=["extract"])
@@ -23,7 +28,7 @@ def get_health():
     return {
         "status": "Okay",
         "service": "API",
-        "version": "0.1",
+        "version": __version__,
         "provider": provider,
         "model": model,
     }

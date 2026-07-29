@@ -1,7 +1,7 @@
 [project]
 name = "ai-workbench"
-version = "0.1.0"
-description = "phase 1 scaffolding "
+version = "0.3.0"
+description = "Production-grade LLM application platform built from first principles"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
