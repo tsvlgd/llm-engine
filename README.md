@@ -1,8 +1,8 @@
-# AI Workbench
+# LLM engine
 
 > Build production-grade LLM applications from first principles.
 
-AI Workbench is a progressive AI backend that evolves from a simple LLM API into a production-style AI platform. Core AI concepts are implemented manually before introducing framework integrations. Each release adds a new capability to the runtime while preserving previous implementations for educational comparison and architectural clarity.
+Workbench is a progressive AI backend that evolves from a simple LLM API into a production-style AI platform. Core AI concepts are implemented manually before introducing framework integrations. Each release adds a new capability to the runtime while preserving previous implementations for educational comparison and architectural clarity.
 
 ---
 
