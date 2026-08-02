@@ -1,5 +1,14 @@
 from datetime import datetime
 
+CURRENT_TIME_SCHEMA = {
+    "type": "function",
+    "function": {
+        "name": "current_time",
+        "description": "Get the current date and time in ISO format.",
+        "parameters": {"type": "object", "properties": {}, "required": []},
+    },
+}
+
 
 def current_time() -> str:
     """

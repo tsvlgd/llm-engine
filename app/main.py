@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from app.api import chat, summarize, extract, sql, code, assistant
-from app.core.config import settings
-from app import __title__, __version__, __description__
 
+from app import __description__, __title__, __version__
+from app.api import assistant, chat, code, extract, sql, summarize
+from app.core.config import settings
+from app.tools.registry import registry
 
 app = FastAPI(
     title=__title__,
@@ -31,4 +32,5 @@ def get_health():
         "version": __version__,
         "provider": provider,
         "model": model,
+        "tools integrated": registry.tool_count(),
     }
